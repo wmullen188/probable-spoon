@@ -1,0 +1,107 @@
+<!-- 
+		Name: Bill Mullen
+		Date: 7/10/2020
+		Class: CSCI2447, Javascript Fundamentals
+		Project 4
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Whack-A-Mole (CSCI2447)</title>
+    
+    <!-- CSS styles: This is for me to worry about; not you. -->
+	<link href="css/game.css" rel="stylesheet" />
+
+	<!-- jQuery library and script for the website-->
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script>
+		var score = 0;
+		var timeRemaining = 30;
+
+		$(document).ready(function() {
+			// test that the start button works
+			$('button#start_button').click(function() {
+				start();
+				
+			}); // end click
+		}); // end ready
+
+		// return random x-position
+		function randomX() {
+			var max = 600;
+			var x = Math.floor(Math.random() * (+max + 1));
+			return x;
+		}
+
+		// return random y-position
+		function randomY() {
+			var max = 300;
+			var y = Math.floor(Math.random() * (+max + 1));
+			return y;
+		}
+
+		// increment and update score
+		function updateScore() {
+			// increment score
+			score++;
+			// update score HTML
+			$('span#score').text(score + ' pts');
+		}
+
+		// start game function
+		function start() {
+			// show timer
+			$('#timer').show();
+			// show mole
+			addMole();
+			// update timer
+			updateTimer();
+			// create random x and y coordinates
+			var x = randomX();
+			var y = randomY();
+			// show them in an alert
+			alert('x = ' + x + ' and y = ' + y);
+			// test the increment score function
+			$('#gamespace').click(updateScore);
+			$('#gamespace').css('backgroundColor', 'black');
+			$('html, body').css('backgroundColor', 'red');
+		}
+
+		// time decrement and update timer
+		function updateTimer() {
+			// decrement time
+			timeRemaining--;
+			// update timer HTML
+			$('div#timer').text(timeRemaining + ' seconds left');
+		}
+
+		function addMole() {
+			// add the HTML for img tag of mole (PNG format)
+			$('#gamespace').append('<img src="img/mole.png" />');
+		}
+	</script>
+	
+  </head>
+  <body>
+
+	<div id="content">
+
+		<h1>Whack-A-Mole</h1>
+		
+		<p>After clicking "start", you will have 30 seconds to click
+		as many moles as you can. The moles appear randomly so be ready! </p>
+		
+		<div id="controls">
+			<span id="score">0 pts</span>
+			<button type="button" id="start_button">Start!</button>
+		</div>
+		
+		<div id="timer">30 seconds left</div>
+		
+		<div id="gamespace"></div>
+		
+	</div>
+  </body>
+</html>
