@@ -1,0 +1,16 @@
+/**
+ * Results of debugger testing.
+ * @author Bill Mullen
+ * 
+ * @version 20191014
+ **/
+
+1. The conditional for even should be if (evenCheck == 0),
+not if (evenCheck != 1).
+
+2. The second if statement needs to be changed to an if else 
+statement, if else (value < 60).
+
+3. Needs parentheses to concatenate the string to one of the
+characters first, otherwise the characters add together and 
+print like an integer.
